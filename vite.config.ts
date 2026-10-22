@@ -5,5 +5,5 @@ import react from "@vitejs/plugin-react";
 // e.g. if your repo is github.com/yourname/Lea-Fakatonga, base should be "/Lea-Fakatonga/"
 export default defineConfig({
   plugins: [react()],
-  base: "/Lea-Fakatonga/",
+  base: "/Kolosalio-Mobile/",
 });
