@@ -53,6 +53,7 @@ export type Chrome = {
   pronunciation: string;
   playPronunciation: string;
   letters: string;
+  newTab: string;
 };
 
 const en: Chrome = {
@@ -98,6 +99,7 @@ const en: Chrome = {
   pronunciation: "Pronunciation",
   playPronunciation: "Play pronunciation",
   letters: "Letters",
+  newTab: "opens in a new tab",
 };
 
 const to: Chrome = {
@@ -143,6 +145,7 @@ const to: Chrome = {
   pronunciation: "Pronunciation", // TODO verify
   playPronunciation: "Play pronunciation", // TODO verify
   letters: "Letters", // TODO verify
+  newTab: "opens in a new tab", // TODO verify
 };
 
 const chrome: Record<UiLang, Chrome> = { en, to };
