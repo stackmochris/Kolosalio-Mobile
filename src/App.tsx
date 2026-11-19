@@ -7,6 +7,7 @@ import DirectionSeg from "./components/DirectionSeg";
 import Drawer from "./components/Drawer";
 import { CloseIcon, HamburgerIcon, SearchIcon } from "./components/Icons";
 import Sheet from "./components/Sheet";
+import ReferralCard from "./components/ReferralCard";
 import TermCard from "./components/TermCard";
 import TermDetail from "./components/TermDetail";
 import { professions } from "./data/professions";
@@ -506,11 +507,13 @@ export default function App() {
                     <DirectionSeg direction={direction} onChange={setDirection} label={copy.direction} />
                   )}
                 </div>
-                <p className="result-count" aria-live="polite">
-                  <span key={`${filtered.length}-${needle}`} className="count-fade">
-                    {copy.wordCount(filtered.length)}
-                  </span>
-                </p>
+                {profession.referral ? null : (
+                  <p className="result-count" aria-live="polite">
+                    <span key={`${filtered.length}-${needle}`} className="count-fade">
+                      {copy.wordCount(filtered.length)}
+                    </span>
+                  </p>
+                )}
                 <div className="chips" role="tablist" aria-label={copy.subjects} onKeyDown={onTabKeyDown}>
                   {professions.map((pack) => {
                     const active = pack.slug === profession.slug;
@@ -526,12 +529,14 @@ export default function App() {
                         onClick={() => selectProfession(pack.slug)}
                       >
                         {pack.name_en}
-                        <span className="chip-count">{pack.entries.length}</span>
+                        {pack.referral ? null : <span className="chip-count">{pack.entries.length}</span>}
                       </button>
                     );
                   })}
                 </div>
-                {filtered.length === 0 ? (
+                {profession.referral ? (
+                  <ReferralCard referral={profession.referral} direction={direction} />
+                ) : filtered.length === 0 ? (
                   <div className="empty card">
                     <h2>{copy.noMatching}</h2>
                     <p>{needle ? copy.nothingMatches(deferredQuery.trim()) : copy.nothingToShow}</p>
@@ -580,9 +585,11 @@ export default function App() {
                   </div>
                 )}
               </div>
-              <AlphaIndex letters={grouped.letters} wide={wide} label={copy.letters} onScrubbing={setScrubbing} />
+              {profession.referral ? null : (
+                <AlphaIndex letters={grouped.letters} wide={wide} label={copy.letters} onScrubbing={setScrubbing} />
+              )}
             </div>
-            {wide && (
+            {wide && !profession.referral && (
               <div className="detail-pane" aria-label={copy.termDetail}>
                 {selected ? (
                   <TermDetail entry={selected} direction={direction} layout="inline" onCopy={() => copyEntry(selected)} />

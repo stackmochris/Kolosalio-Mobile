@@ -230,7 +230,7 @@ export default function Drawer({
                       {pack.name_to}
                     </span>
                   </span>
-                  <span className="subject-count">{pack.entries.length}</span>
+                  {pack.referral ? null : <span className="subject-count">{pack.entries.length}</span>}
                 </button>
               ))}
             </div>

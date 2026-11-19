@@ -744,6 +744,60 @@ mark {
   padding: 16px;
 }
 
+.referral-card {
+  margin: 8px 16px 32px;
+  padding: 22px 22px 18px;
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--r);
+}
+
+.referral-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.referral-subtitle {
+  margin: 6px 0 0;
+  color: var(--meta);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.referral-note {
+  margin: 14px 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.referral-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.referral-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 16px;
+  border: 1px solid var(--ink);
+  border-radius: var(--btn-r);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.referral-link:active { transform: none; }
+
 .section-label {
   margin: 0 0 8px;
   color: var(--meta);
